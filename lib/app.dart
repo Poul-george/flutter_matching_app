@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_hidden_drawer/flutter_hidden_drawer.dart';
-import 'component/Bottom/navigationBar.dart';
+import 'component/bottom/navigationBar.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
