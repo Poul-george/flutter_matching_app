@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_hidden_drawer/flutter_hidden_drawer.dart';
+import 'package:flutter_matching_app/services/googlelogin/logout.dart';
 import 'component/bottom/navigationBar.dart';
+import 'package:flutter_matching_app/login.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,6 +27,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void completeLogout() {
+    googleSignOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MyLoginApp()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,21 +74,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Hot Line'),
       ),
-      // body: Padding(
-      //   padding: EdgeInsets.only(left: 0),
-      //   child: Center(
-      //       child: ElevatedButton(
-      //     child: const Text('Drawerを開く'),
-      //     onPressed: () {
-      //       _scaffoldKey.currentState!.openDrawer();
-      //     },
-      //   )),
-      // ),
-      body: MyStatefulWidget(),
+      body: const MyStatefulWidget(),
       floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: 65),
+        padding: const EdgeInsets.only(bottom: 65),
         child: FloatingActionButton(
-          onPressed: () => {print("pull up")},
+          // ここにtestでログアウト処理を入れているが、本実装ではログアウト処理は実装しない
+          onPressed: () => {
+            print("ログアウトします"),
+            completeLogout(),
+          },
           child: const Icon(Icons.favorite),
         ),
       ),

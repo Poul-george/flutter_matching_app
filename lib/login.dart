@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'services/auth_service.dart';
+import 'services/googlelogin/auth_service.dart';
 
 class MyLoginApp extends StatelessWidget {
   const MyLoginApp({super.key});
@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text('Hot Line Login'),
+        title: const Text('Login'),
       ),
       body: const SignInScreen(),
     );
