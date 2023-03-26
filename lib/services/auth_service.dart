@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_matching_app/component/signin/google_sign_in_bottom.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_matching_app/app.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -11,14 +13,32 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
+  void _completeLogin() {
+    Navigator.pushReplacement<void, void>(
+      context,
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const MyApp(),
+      ),
+    );
+  }
+
   Future<void> _signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await _googleSignIn.signIn();
       if (googleSignInAccount != null) {
-        // Google sign-in succeeded, now authenticate with Firebase
-        // using the `googleSignInAccount.authentication` object.
+        // ログイン後topページに遷移
+        _completeLogin();
         print(googleSignInAccount);
+      }
+      return;
+    } on PlatformException catch (e) {
+      if (e.code == 'sign_in_canceled') {
+        // Googleログインがキャンセルされた場合の処理
+        print("google login is canceled");
+      } else {
+        // その他のPlatformExceptionが発生した場合の処理
+        print("google login is not canceled");
       }
     } catch (error) {
       // Handle sign-in error
