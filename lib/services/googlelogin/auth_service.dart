@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_matching_app/component/signin/google_sign_in_bottom.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_matching_app/app.dart';
+import 'package:flutter_matching_app/services/googlelogin/final_googlesignin.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -11,7 +12,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  // final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   void _completeLogin() {
     Navigator.pushReplacement<void, void>(
@@ -25,7 +26,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Future<void> _signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
+          await googleSignIn.signIn();
       if (googleSignInAccount != null) {
         // ログイン後topページに遷移
         _completeLogin();

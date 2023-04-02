@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/services/googlelogin/logout.dart';
 import 'component/bottom/navigationBar.dart';
-import 'package:flutter_matching_app/login.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -27,14 +26,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  void completeLogout() {
-    googleSignOut();
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyLoginApp()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // ここにtestでログアウト処理を入れているが、本実装ではログアウト処理は実装しない
           onPressed: () => {
             print("ログアウトします"),
-            completeLogout(),
+            completeLogout(context),
           },
           child: const Icon(Icons.favorite),
         ),
