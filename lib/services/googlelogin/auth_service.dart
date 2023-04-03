@@ -12,8 +12,6 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  // final GoogleSignIn _googleSignIn = GoogleSignIn();
-
   void _completeLogin() {
     Navigator.pushReplacement<void, void>(
       context,

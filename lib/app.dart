@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/services/googlelogin/logout.dart';
-import 'component/bottom/navigationBar.dart';
+import 'package:flutter_matching_app/component/bottom/navigation_bar.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

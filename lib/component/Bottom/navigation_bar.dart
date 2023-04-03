@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'parts/account.dart';
 import 'parts/favorite.dart';
 import 'parts/home.dart';

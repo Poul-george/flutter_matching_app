@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_matching_app/services/googlelogin/login_is_active.dart';
 import 'package:flutter_matching_app/model/user.dart';
 import 'package:flutter_matching_app/services/app/api/v1/user_api.dart';
