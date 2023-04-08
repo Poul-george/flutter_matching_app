@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/services/googlelogin/login_is_active.dart';
 import 'package:flutter_matching_app/model/user.dart';
 import 'package:flutter_matching_app/services/app/api/v1/user_api.dart';
+import 'package:flutter_matching_app/services/shared_preferences/user_info.dart';
 
 class AccountScreen extends StatefulWidget {
 // class UsersScreen extends StatefulWidget {
@@ -11,34 +12,50 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _UsersScreenState extends State<AccountScreen> {
-  List<User> _users = [];
+  User? _user;
+  Map<String, dynamic>? userInfo;
 
   @override
   void initState() {
     super.initState();
-    fetchUsers().then((users) {
+    getUserInfo().then((value) {
+      if (value == null) {
+        return;
+      }
       setState(() {
-        _users = users;
+        userInfo = value; // nullチェックしてデフォルト値を設定する
       });
+      // sessionに保存が確認できたら、その情報をもにdbからデータを取ってくる
+      if (userInfo != null) {
+        fetchUsers(
+                userID: userInfo?['id'],
+                externalUserID: userInfo?['external_user_id'])
+            .then((user) {
+          setState(() {
+            if (user == null) {
+              return;
+            }
+            _user = user;
+          });
+        });
+      } else {
+        print("login user is record not found");
+        return;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print("-----------------------");
-    print(isGoogleLoginUser(context));
-    print("-----------------------");
     return Scaffold(
-      appBar: AppBar(title: Text('Users')),
-      body: ListView.builder(
-        itemCount: _users.length,
-        itemBuilder: (context, index) {
-          final user = _users[index];
-          return ListTile(
-            title: Text(user.name),
-            subtitle: Text('mail: ${user.mailAddress}'),
-          );
-        },
+      appBar: AppBar(title: Text('User')),
+      body: ListView(
+        children: [
+          Text('UserID: ${_user?.id}'),
+          Text('UserExternalID: ${_user?.externalUserID}'),
+          Text('Name: ${_user?.name}'),
+          Text('Email: ${_user?.mailAddress}'),
+        ],
       ),
     );
   }

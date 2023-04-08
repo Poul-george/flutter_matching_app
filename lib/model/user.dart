@@ -1,5 +1,6 @@
 class User {
   final int id;
+  final String externalUserID;
   final String name;
   final String mailAddress;
   final String comments;
@@ -7,6 +8,7 @@ class User {
 
   User(
       {required this.id,
+      required this.externalUserID,
       required this.name,
       required this.mailAddress,
       required this.comments,
@@ -15,6 +17,7 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
+      externalUserID: json['external_user_id'],
       name: json['name'],
       mailAddress: json['mail_address'],
       comments: json['comments'],
