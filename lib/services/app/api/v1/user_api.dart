@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:google_sign_in/google_sign_in.dart';
 
 Future<User?> fetchUsers({String externalUserID = "", int userID = 0}) async {
+  print("googleログイン処理スッテプ3.1");
+  print(externalUserID);
   String data = "?";
   if (externalUserID != "") {
     data = data + "external_user_id=$externalUserID";
@@ -14,7 +16,8 @@ Future<User?> fetchUsers({String externalUserID = "", int userID = 0}) async {
 
   final response = await http.get(
     Uri.parse(
-      'http://localhost:1324/api/v1/users/detail$data',
+      // localhostなどでも良いがandroidの場合、/10.0.2.2出ないとダメそう
+      'http://10.0.2.2:1324/api/v1/users/detail$data',
     ),
     // goのcorsでoriginを見てリクエストを受け付けているのでheaderにoriginで許可されているoriginを指定する
     headers: {'Origin': 'http://127.0.0.1:5555'},
@@ -42,7 +45,7 @@ Future<bool> postUser(GoogleSignInAccount userAccount) async {
     'email': userAccount.email,
   };
 
-  final url = Uri.parse('http://localhost:1324/api/v1/users');
+  final url = Uri.parse('http://10.0.2.2:1324/api/v1/users');
   final response = await http.post(
     url,
     headers: {

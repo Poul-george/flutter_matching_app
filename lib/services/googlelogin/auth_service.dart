@@ -29,6 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
+      print(googleSignInAccount);
       if (googleSignInAccount != null) {
         if (googleSignInAccount.id == "") {
           print("googleSignInAccount.id is not found");
@@ -36,7 +37,6 @@ class _SignInScreenState extends State<SignInScreen> {
         }
         // googleログイン後、userテーブルにログインユーザーが作成されているか判定する。なかった場合は新規作成
         User? user = await fetchUsers(externalUserID: googleSignInAccount.id);
-        print("${user?.externalUserID}first");
         if (user == null) {
           final bool flag = await postUser(googleSignInAccount);
           if (!flag) {
@@ -56,7 +56,6 @@ class _SignInScreenState extends State<SignInScreen> {
           user.name,
           user.mailAddress,
         );
-        print("${userJson}session");
         if (userJson != null) {
           saveUserInfo(userJson);
         }
