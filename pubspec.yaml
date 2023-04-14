@@ -34,7 +34,7 @@ dependencies:
   firebase_core: ^2.4.10
   firebase_auth: ^4.2.10
   google_sign_in: ^5.4.2
-  http: ^0.13.4
+  http: ^0.13.5
   shared_preferences: ^2.0.14
 
 
@@ -42,6 +42,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_hidden_drawer: ^1.0.1
+  flutter_config: ^2.0.0
+  yaml: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +74,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/config/local.yml
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

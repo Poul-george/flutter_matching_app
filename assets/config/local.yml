@@ -1,0 +1,3 @@
+ios_local_host: http://localhost:1324
+android_local_host: http://10.0.2.2:1324
+origin: http://127.0.0.1:5555
