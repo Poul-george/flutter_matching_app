@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'services/googlelogin/auth_service.dart';
+import 'package:flutter_matching_app/services/googlelogin/auth_service.dart';
 
 class MyLoginApp extends StatelessWidget {
   const MyLoginApp({super.key});

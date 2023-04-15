@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'parts/account.dart';
-import 'parts/favorite.dart';
-import 'parts/home.dart';
-import 'parts/notification.dart';
+import 'package:flutter_matching_app/view/account/account.dart';
+import 'package:flutter_matching_app/view/favorite/favorite.dart';
+import 'package:flutter_matching_app/view/home/home.dart';
+import 'package:flutter_matching_app/view/notification/notification.dart';
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     HomeScreen(),
     FavoriteScreen(),
     NotificationScreen(),
-    AccountScreen()
+    AccountScreen(),
   ];
 
   int _selectedIndex = 0;
