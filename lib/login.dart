@@ -34,6 +34,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: const Text('Login'),
+        centerTitle: true,
       ),
       body: const SignInScreen(),
     );

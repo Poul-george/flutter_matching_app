@@ -25,27 +25,33 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Future<void> _signInWithGoogle() async {
+  Future<void> _signInWithGoogle(BuildContext context) async {
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
       print(googleSignInAccount);
+
       if (googleSignInAccount != null) {
         if (googleSignInAccount.id == "") {
           print("googleSignInAccount.id is not found");
           return;
         }
+        if (!mounted) return;
         // googleログイン後、userテーブルにログインユーザーが作成されているか判定する。なかった場合は新規作成
-        User? user = await fetchUsers(externalUserID: googleSignInAccount.id);
+        User? user = await fetchUsers(
+            externalUserID: googleSignInAccount.id, context: context);
         if (user == null) {
-          final bool flag = await postUser(googleSignInAccount);
+          if (!mounted) return;
+          final bool flag = await postUser(googleSignInAccount, context);
           if (!flag) {
             print("user record not create");
             return;
           }
         }
-        user = await fetchUsers(externalUserID: googleSignInAccount.id);
-        print("${user?.externalUserID}2time");
+
+        if (!mounted) return;
+        user = await fetchUsers(
+            externalUserID: googleSignInAccount.id, context: context);
         if (user == null) {
           print("user is record not found");
           return;
@@ -84,7 +90,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: Center(
         child: GoogleSignInButton(
-          onPressed: _signInWithGoogle,
+          onPressed: () => _signInWithGoogle(context),
           text: 'Sign in with Google',
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:flutter_matching_app/services/app/api/v1/user_api.dart';
 import 'package:flutter_matching_app/services/shared_preferences/user_info.dart';
 import 'package:flutter_matching_app/component/drawer/user_info_drawer.dart';
 import 'package:flutter_matching_app/theme/color.dart';
+import 'package:flutter_matching_app/component/errordaialog/net_ettor.dart';
 
 class AccountScreen extends StatefulWidget {
 // class UsersScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class AccountScreen extends StatefulWidget {
 
 class _UsersScreenState extends State<AccountScreen> {
   User? _user;
-  Map<String, dynamic>? userInfo;
+  Map<String, dynamic>? userLocalState;
 
   @override
   void initState() {
@@ -24,16 +25,19 @@ class _UsersScreenState extends State<AccountScreen> {
         return;
       }
       setState(() {
-        userInfo = value; // nullチェックしてデフォルト値を設定する
+        userLocalState = value; // nullチェックしてデフォルト値を設定する
       });
       // sessionに保存が確認できたら、その情報をもにdbからデータを取ってくる
-      if (userInfo != null) {
+      if (userLocalState != null) {
         fetchUsers(
-                userID: userInfo?['id'],
-                externalUserID: userInfo?['external_user_id'])
+                userID: userLocalState?['id'],
+                externalUserID: userLocalState?['external_user_id'],
+                context: context)
             .then((user) {
           setState(() {
             if (user == null) {
+              _user = User.instansUser();
+              showErrorDialog(context, 'user情報がありません', 400);
               return;
             }
             _user = user;
@@ -48,6 +52,13 @@ class _UsersScreenState extends State<AccountScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_user == null) {
+      return const Center(
+        // fetchUserがrecord not foundの時にずっとリロードしてしまう
+        child: CircularProgressIndicator(),
+      );
+    }
+
     return Scaffold(
       endDrawer: userInfoDrawer(),
       appBar: AppBar(

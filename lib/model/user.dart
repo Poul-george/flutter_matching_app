@@ -24,4 +24,16 @@ class User {
       updatedAt: json['latest_day'],
     );
   }
+
+  // いらなくなったら消す
+  factory User.instansUser() {
+    return User(
+      id: 0,
+      externalUserID: "",
+      name: "",
+      mailAddress: "",
+      comments: "",
+      updatedAt: "",
+    );
+  }
 }
