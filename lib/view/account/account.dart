@@ -47,7 +47,15 @@ class _UsersScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('User')),
+      appBar: AppBar(
+        title: const Text(
+          'User',
+          style: TextStyle(
+            color: Color.fromARGB(187, 129, 129, 255),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      ),
       body: ListView(
         children: [
           Text('UserID: ${_user?.id}'),

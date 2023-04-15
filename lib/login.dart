@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/services/googlelogin/auth_service.dart';
+import 'package:flutter_matching_app/theme/color.dart';
 
 class MyLoginApp extends StatelessWidget {
   const MyLoginApp({super.key});
 
   @override
-  static const MaterialAccentColor _accent = Colors.amberAccent;
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: const MaterialColor(
+          0xB98181FF,
+          colorTheme,
+        ),
       ),
-      home: const MyHomePage(),
+      home: const MyLoginPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MyLoginPage extends StatefulWidget {
+  const MyLoginPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyLoginPage> createState() => _MyLoginPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyLoginPageState extends State<MyLoginPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
