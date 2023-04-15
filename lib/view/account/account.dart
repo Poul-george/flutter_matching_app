@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/model/user.dart';
 import 'package:flutter_matching_app/services/app/api/v1/user_api.dart';
 import 'package:flutter_matching_app/services/shared_preferences/user_info.dart';
+import 'package:flutter_matching_app/component/drawer/user_info_drawer.dart';
+import 'package:flutter_matching_app/theme/color.dart';
 
 class AccountScreen extends StatefulWidget {
 // class UsersScreen extends StatefulWidget {
@@ -47,14 +49,21 @@ class _UsersScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: userInfoDrawer(),
       appBar: AppBar(
-        title: const Text(
-          'User',
-          style: TextStyle(
-            color: Color.fromARGB(187, 129, 129, 255),
+        centerTitle: false,
+        title: Text(
+          _user?.name ?? 'User Info',
+          style: const TextStyle(
+            color: mainColor,
           ),
+          textAlign: TextAlign.left,
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: white,
+        iconTheme: const IconThemeData(
+          color: iconBlack,
+          size: 26.0,
+        ),
       ),
       body: ListView(
         children: [
