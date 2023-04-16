@@ -13,6 +13,9 @@ const colorTheme = <int, Color>{
   900: Color.fromRGBO(129, 129, 255, 1),
 };
 
+// text color
 const mainColor = Color.fromARGB(187, 129, 129, 255);
 const white = Color.fromARGB(255, 255, 255, 255);
+const black = Color.fromARGB(200, 0, 0, 0);
+// icon color
 const iconBlack = Color.fromARGB(200, 0, 0, 0);

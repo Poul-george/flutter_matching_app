@@ -60,7 +60,7 @@ class _UsersScreenState extends State<AccountScreen> {
     }
 
     return Scaffold(
-      endDrawer: userInfoDrawer(),
+      endDrawer: userInfoDrawer(context),
       appBar: AppBar(
         centerTitle: false,
         title: Text(
