@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/view/account/account.dart';
 import 'package:flutter_matching_app/view/favorite/favorite.dart';
+import 'package:flutter_matching_app/view/message/message.dart';
 import 'package:flutter_matching_app/view/home/home.dart';
 import 'package:flutter_matching_app/view/notification/notification.dart';
 
@@ -15,6 +16,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const _screens = [
     HomeScreen(),
     FavoriteScreen(),
+    MessageScreen(),
     NotificationScreen(),
     AccountScreen(),
   ];
@@ -37,6 +39,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'お気に入り'),
+          BottomNavigationBarItem(icon: Icon(Icons.messenger), label: 'メッセージ'),
           BottomNavigationBarItem(
               icon: Icon(Icons.notifications), label: 'お知らせ'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'アカウント'),

@@ -26,7 +26,6 @@ Future<User?> fetchUsers(
 
   await http.get(
     Uri.parse(
-      // localhostなどでも良いがandroidの場合、/10.0.2.2出ないとダメそう
       '${config.apiHost}/api/v1/users/detail$data',
     ),
     // goのcorsでoriginを見てリクエストを受け付けているのでheaderにoriginで許可されているoriginを指定する
@@ -62,7 +61,6 @@ Future<bool> postUser(
   await http
       .post(
     Uri.parse('${config.apiHost}/api/v1/users'),
-    // goのcorsでoriginを見てリクエストを受け付けているのでheaderにoriginで許可されているoriginを指定する
     headers: {
       'Origin': config.origin,
       'Content-Type': 'application/json',
