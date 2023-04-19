@@ -5,6 +5,7 @@ import 'package:flutter_matching_app/services/shared_preferences/user_info.dart'
 import 'package:flutter_matching_app/component/drawer/user_info_drawer.dart';
 import 'package:flutter_matching_app/theme/color.dart';
 import 'package:flutter_matching_app/component/errordaialog/net_ettor.dart';
+import 'package:flutter_matching_app/component/form/user/edit.dart';
 
 class AccountScreen extends StatefulWidget {
 // class UsersScreen extends StatefulWidget {
@@ -16,6 +17,7 @@ class AccountScreen extends StatefulWidget {
 class _UsersScreenState extends State<AccountScreen> {
   User? _user;
   Map<String, dynamic>? userLocalState;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -76,13 +78,21 @@ class _UsersScreenState extends State<AccountScreen> {
           size: 26.0,
         ),
       ),
-      body: ListView(
-        children: [
-          Text('UserID: ${_user?.id}'),
-          Text('UserExternalID: ${_user?.externalUserID}'),
-          Text('Name: ${_user?.name}'),
-          Text('Email: ${_user?.mailAddress}'),
-        ],
+      // body: ListView(
+      //   children: [
+      //     Text('UserID: ${_user?.id}'),
+      //     Text('UserExternalID: ${_user?.externalUserID}'),
+      //     Text('Name: ${_user?.name}'),
+      //     Text('Email: ${_user?.mailAddress}'),
+      //   ],
+      // ),
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        behavior: HitTestBehavior.opaque,
+        child: Form(
+          key: _formKey,
+          child: UserEditForm(),
+        ),
       ),
     );
   }

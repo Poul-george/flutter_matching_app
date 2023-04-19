@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/services/googlelogin/auth_service.dart';
 import 'package:flutter_matching_app/theme/color.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyLoginApp extends StatelessWidget {
   const MyLoginApp({super.key});
@@ -9,6 +10,7 @@ class MyLoginApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        textTheme: GoogleFonts.trainOneTextTheme(),
         primarySwatch: const MaterialColor(
           0xB98181FF,
           colorTheme,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/services/googlelogin/logout.dart';
 import 'package:flutter_matching_app/component/bottom/navigation_bar.dart';
 import 'package:flutter_matching_app/theme/color.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,7 +11,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // （2） 多言語対応処理の追加
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      // （3） 対応する言語の宣言
+      supportedLocales: const [
+        Locale('ja', ''),
+        Locale('en', ''),
+      ],
       theme: ThemeData(
+        textTheme: GoogleFonts.sawarabiGothicTextTheme(),
         primarySwatch: const MaterialColor(
           0xB98181FF,
           colorTheme,
