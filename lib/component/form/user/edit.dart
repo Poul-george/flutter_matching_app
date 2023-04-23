@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_matching_app/theme/color.dart';
-import 'package:flutter_matching_app/component/form/field/form_dropdown_button.dart';
-import 'package:flutter_matching_app/component/form/field/text_field.dart';
+import 'package:flutter_matching_app/component/form/field/transform_rotate_text.dart';
 import 'package:flutter_matching_app/component/form/field/date_pick.dart';
 
 class UserEditForm extends StatefulWidget {
@@ -33,11 +32,11 @@ class _UserEditFormState extends State<UserEditForm> {
               ),
             ),
           ),
-          paddingTextfield('名前'),
-          paddingTextfield('カタカナ'),
-          FormDropdownButto(name: '職業'),
-          FormDropdownButto(name: '職種'),
+          // paddingTextfield('名前'),
+          // paddingTextfield('カタカナ'),
           FormDropdownButto(name: '年齢'),
+          // FormDropdownButto(name: '職業'),
+          // FormDropdownButto(name: '職種'),
           const DatePickeBotton(),
           ElevatedButton(
             onPressed: () {

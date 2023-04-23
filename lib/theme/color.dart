@@ -16,6 +16,8 @@ const colorTheme = <int, Color>{
 // text color
 const mainColor = Color.fromARGB(187, 129, 129, 255);
 const white = Color.fromARGB(255, 255, 255, 255);
+const gray = Color.fromARGB(255, 160, 160, 160);
 const black = Color.fromARGB(200, 0, 0, 0);
 // icon color
 const iconBlack = Color.fromARGB(200, 0, 0, 0);
+const icongray = Color.fromARGB(255, 196, 196, 196);
