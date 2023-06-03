@@ -41,6 +41,7 @@ class _SignInScreenState extends State<SignInScreen> {
         User? user = await fetchUsers(
             externalUserID: googleSignInAccount.id, context: context);
         if (user == null) {
+          print("user is record not found fetch 1");
           if (!mounted) return;
           final bool flag = await postUser(googleSignInAccount, context);
           if (!flag) {
@@ -53,7 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
         user = await fetchUsers(
             externalUserID: googleSignInAccount.id, context: context);
         if (user == null) {
-          print("user is record not found");
+          print("user is record not found fetch 2");
           return;
         }
         final Map<String, dynamic>? userJson = await mapperJson(
